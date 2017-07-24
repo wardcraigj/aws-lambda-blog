@@ -19,7 +19,7 @@ var get_templates = function(template){
         header: require('html!../../templates/'+template+'/header.html'),
         footer: require('html!../../templates/'+template+'/footer.html'),
         template: require('html!../../templates/'+template+'/post.html')
-    } 
+    }
 }
 
 
@@ -45,7 +45,7 @@ exports.handler = (event, context, callback) => {
         var settings = settings_object.object;
 
         var post = yield getBlogPostFromDB(post_id);
-        var posts = yield getBlogPostsFromDB(); 
+        var posts = yield getBlogPostsFromDB();
 
         for(var i = 0; i < categories.length; i++){
             if(!_.find(posts, function(post){return _.includes(post.categories, categories[i].category_id)})){
@@ -58,13 +58,13 @@ exports.handler = (event, context, callback) => {
 
         var html = doT.template(templates.main_template)({
             header: doT.template(templates.header)({
-                website_title: settings.website_title,
+                website_title: post.title + ' - ' + settings.website_title,
                 header_title: settings.header_title,
                 header_desc: settings.header_desc,
-                
                 site_base_url: site_base_url,
                 categories: categories,
                 template_settings: settings.template,
+                meta_description: post.post_meta_description,
                 recent_posts: posts
             }),
             content: doT.template(templates.template)({
@@ -83,14 +83,14 @@ exports.handler = (event, context, callback) => {
             }),
         });
 
-        
+
 
         callback(null, html);
     }).catch(onerror);
 
     function getBlogPostFromDB(post_id){
         return new Promise(function(resolve, reject){
-            var params = { 
+            var params = {
                 TableName: posts_table,
                 Key:{
                     post_id: post_id
@@ -110,11 +110,11 @@ exports.handler = (event, context, callback) => {
 
     function getBlogPostsFromDB(){
         return new Promise(function(resolve, reject){
-            var params = { 
+            var params = {
                 TableName: posts_table,
                 IndexName: "post_status-date-index",
                 KeyConditionExpression: "post_status = :post_status AND #date > :date",
-                
+
                 ExpressionAttributeNames: {"#date": "date"},
 
                 ExpressionAttributeValues: {
@@ -152,7 +152,7 @@ exports.handler = (event, context, callback) => {
             });
         })
     }
-    
+
     function onerror(err) {
         console.log("ERROR!");
         console.log(err);

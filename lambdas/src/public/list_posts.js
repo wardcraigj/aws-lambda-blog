@@ -18,7 +18,7 @@ var get_templates = function(template){
         header: require('html!../../templates/'+template+'/header.html'),
         footer: require('html!../../templates/'+template+'/footer.html'),
         template: require('html!../../templates/'+template+'/list.html')
-    } 
+    }
 }
 
 exports.handler = (event, context, callback) => {
@@ -51,10 +51,10 @@ exports.handler = (event, context, callback) => {
 
         var html = doT.template(templates.main_template)({
             header: doT.template(templates.header)({
-                website_title: settings.website_title,
+                website_title: settings.website_title + ' - ' + settings.header_desc,
                 header_title: settings.header_title,
                 header_desc: settings.header_desc,
-                
+
                 site_base_url: site_base_url,
                 categories: categories,
                 template_settings: settings.template,
@@ -79,11 +79,11 @@ exports.handler = (event, context, callback) => {
 
     function getBlogPostsFromDB(){
         return new Promise(function(resolve, reject){
-            var params = { 
+            var params = {
                 TableName: posts_table,
                 IndexName: "post_status-date-index",
                 KeyConditionExpression: "post_status = :post_status AND #date > :date",
-                
+
                 ExpressionAttributeNames: {"#date": "date"},
 
                 ExpressionAttributeValues: {

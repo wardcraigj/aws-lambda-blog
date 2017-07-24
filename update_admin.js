@@ -32,15 +32,15 @@ function getFiles(srcpath) {
 }
 
 function getEntries(){
-  var public_files = getFiles(path.join(__dirname, "./lambdas/src/public"))
+  var public_files = getFiles(path.join(__dirname, "./lambdas/src/admin"))
     .filter(obj => {
-    	return _.includes(["about.js", "contact.js", "get.js", "get_post.js", "get_posts_by_category.js"], obj);
-    	//return _.includes(["get_post_admin.js", "upload_post.js"], obj);
+    	//return _.includes(["about.js", "contact.js", "get.js", "get_post.js", "get_posts_by_category.js"], obj);
+    	return _.includes(["get_post_admin.js", "upload_post.js"], obj);
     }).map(filename => {
 	       return {
 	       	name: filename,
 	       	path: path.join(
-		         path.join(__dirname, "./lambdas/src/public"),
+		         path.join(__dirname, "./lambdas/src/admin"),
 		         filename
 		    )
 	       };

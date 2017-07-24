@@ -40,7 +40,9 @@ exports.handler = (event, context, callback) => {
             date: post.date,
             title: post.title,
             post_html: post_html,
-            post_status: post.post_status
+            post_status: post.post_status,
+            post_meta_description: post.post_meta_description,
+            post_meta_keywords: post.post_meta_keywords
         });
     }).catch(function(err) {
         console.log("ERROR!");
