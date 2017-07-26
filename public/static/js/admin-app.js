@@ -612,8 +612,7 @@ app.controller('postController', ['$scope', '$http', '$location', '$timeout', '$
 						$scope.post.date = response.data.date;
 						$scope.post.categories = response.data.categories;
 						$scope.post_html = response.data.post_html;
-						$scope.post_meta_description = response.data.post_meta_description;
-						$scope.post_meta_keywords = response.data.post_meta_keywords;
+						$scope.post.post_meta_description = response.data.post_meta_description;
 
 						resolve();
 					}, function errorCallback(response) {
@@ -752,9 +751,8 @@ app.controller('postController', ['$scope', '$http', '$location', '$timeout', '$
 						title: $scope.post.title,
 						categories: $scope.post.categories,
 						date: $scope.post.date,
-						html: $scope.post.content,
 						post_meta_description: $scope.post.post_meta_description,
-						post_meta_keywords: $scope.post.post_meta_keywords,
+						html: $scope.post.content
 					  }
 					}).then(function successCallback(response) {
 						$timeout(function(){

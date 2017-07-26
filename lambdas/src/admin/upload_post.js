@@ -32,8 +32,7 @@ exports.handler = (event, context, callback) => {
     var categories = event.categories;
     var date = event.date;
     var html = event.html;
-    var post_meta_description = event.post_meta_description;
-    var post_meta_keywords = event.post_meta_keywords;
+    var post_meta_description = event.post_meta_description || '';
 
     var articles_bucket = new AWS.S3({params: {Bucket: stage_articles_bucket}});
 
@@ -45,13 +44,14 @@ exports.handler = (event, context, callback) => {
       }else{
         date = moment(date).valueOf();
       }
-
+        console.log("post desc: " + post_meta_description);
+        console.log(event);
       if(!post_id){ // NEW POST
-        post_id = yield addBlogPostToDB(title, date, categories, post_status, post_meta_description, post_meta_keyword);
+        post_id = yield addBlogPostToDB(title, date, categories, post_status, post_meta_description);
       }else{
       	var old_post = yield getBlogPostFromDB(post_id);
       	console.log(old_post);
-        yield updateBlogPostInDB(old_post.post_id, old_post.date, title, date, categories, post_status, post_meta_description, post_meta_keywords);
+        yield updateBlogPostInDB(old_post.post_id, old_post.date, title, date, categories, post_status, post_meta_description);
       }
 
       yield addBlogPostToS3(post_id, html);
@@ -82,7 +82,7 @@ exports.handler = (event, context, callback) => {
         })
     }
 
-    function addBlogPostToDB(title, date, categories, post_status, post_meta_description, post_meta_keyword){
+    function addBlogPostToDB(title, date, categories, post_status, post_meta_description){
         var post_id = shortid.generate();
 
         return new Promise(function(resolve, reject){
@@ -95,8 +95,7 @@ exports.handler = (event, context, callback) => {
                  categories: categories,
                  post_url: getSlug(title)+"_"+post_id,
                  post_status: post_status || "published",
-                 post_meta_description: post_meta_description || "",
-                 post_meta_keywords: post_meta_keywords || ""
+                 post_meta_description: post_meta_description || ""
               }
             };
 
@@ -110,23 +109,22 @@ exports.handler = (event, context, callback) => {
         })
     }
 
-    function updateBlogPostInDB(post_id, date, title, new_date, categories, post_status, post_meta_description, post_meta_keyword){
+    function updateBlogPostInDB(post_id, date, title, new_date, categories, post_status, post_meta_description){
         return new Promise(function(resolve, reject){
         	var params = {
 	            TableName: stage_posts_table,
 			    Key:{
 			        "post_id": post_id
 			    },
-			    UpdateExpression: "set title = :title, #date=:new_date, categories=:categories, post_status=:post_status",
+			    UpdateExpression: "set title = :title, #date=:new_date, categories=:categories, post_status=:post_status, post_meta_description=:post_meta_description",
     			ExpressionAttributeNames: {"#date": "date"},
 
 			    ExpressionAttributeValues:{
 			        ":title":title,
 			        ":new_date":new_date,
 			        ":categories":categories,
-			        ":post_status":post_status,
-			        ":post_meta_description":post_meta_description,
-			        ":post_meta_keywords":post_meta_keywords
+			        ":post_meta_description":post_meta_description || "",
+			        ":post_status":post_status
 			    },
 			    ReturnValues:"UPDATED_NEW"
 			}
