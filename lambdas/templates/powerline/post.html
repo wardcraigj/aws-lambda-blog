@@ -1,0 +1,32 @@
+<div class="post listing">
+	<div class="row">
+		<div class="col-xs-10"><h1>{{=it.post.title}}</h1></div>
+		<div class="col-xs-2 hard-right dateline hidden-xs-down"><ul class="powerline">
+				<li class="right">
+					<div class="endsection"></div>
+					<div></div>
+					<div class="endsection"></div>
+					<div class="">{{=it.moment(it.post.date).add(1, 'minute').format('D MMMM YYYY')}}</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div>{{=it.post_html}}</div>
+	<div class="share_icons">
+		<a href="https://www.facebook.com/sharer/sharer.php?u={{=it.site_base_url}}/post/{{=it.post.post_url}}"
+	 onclick="window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600'); return false;">
+			<i class="fa fa-facebook-official"></i></a>
+		<a href="https://plus.google.com/share?url={{=it.site_base_url}}/post/{{=it.post.post_url}}"
+	 onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+			<i class="fa fa-google-plus"></i></a>
+		<a href="https://www.linkedin.com/shareArticle?mini=true&url={{=it.site_base_url}}/post/{{=it.post.post_url}}"
+	 onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+			<i class="fa fa-linkedin"></i></a>
+		<a href="http://twitter.com/share?text={{=it.site_base_url}}/post/{{=it.post.post_url}}"
+	 onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+			<i class="fa fa-twitter"></i></a>
+		<!--<i class="fa fa-envelope"></i>-->
+	</div>
+
+</div>
+

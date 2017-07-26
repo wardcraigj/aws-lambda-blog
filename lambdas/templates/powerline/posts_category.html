@@ -1,0 +1,35 @@
+{{ for(var i = it.page * it.no_posts_per_page; i < (it.page * it.no_posts_per_page) + it.no_posts_per_page; i++) { }}
+{{? it.posts[i] && typeof it.posts[i].html !== undefined}}
+
+<div class="post listing">
+	<div class="row">
+		<div class="col-xs-10"><h1><a href="/post/{{=it.posts[i].post_url}}">{{=it.posts[i].title}}</a></h1></div>
+		<div class="col-xs-2 hard-right dateline hidden-xs-down"><ul class="powerline">
+				<li class="right">
+					<div class="endsection"></div>
+					<div></div>
+					<div class="endsection"></div>
+					<div class="">{{=it.moment(it.posts[i].date).add(1, 'minute').format('D MMMM YYYY')}}</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div>{{=it.posts_html[it.posts[i].html]}}</div>
+</div>
+{{?}}
+{{ } }}
+
+<div class="col s12 m12 l12 pagination_bottom_wrap hide-on-small-only">
+	<div class="col s6 m6 l6 pagination_bottom" style="text-align: left;">
+		{{? it.page > 0}}
+		<a href="/category/{{=it.category_name}}/page/{{=it.page-1}}"><i class="fa fa-arrow-left" ></i> previous page</<a>
+				{{?}}
+	</div>
+
+	<div class="col s6 m6 l6 pagination_bottom" style="text-align: right;">
+		{{? it.page < it.last_page}}
+		<a href="/category/{{=it.category_name}}/page/{{=it.page+1}}">next page <i class="fa fa-arrow-right" ></i></a>
+		{{?}}
+	</div>
+</div>
+

@@ -1,0 +1,78 @@
+{{=it.header}}
+<div class="row">
+	<div class="col-xs-12 col-md-3 sidebar">
+		<br />
+		<div class="about">
+			<ul class="powerline hard-left">
+				<li class="left">
+					<div>About</div>
+					<div class="endsection"></div>
+					<div class=""> </div>
+					<div class="endsection"></div>
+				</li>
+			</ul>
+			<br>
+			<div>
+				I'm a PHP Developer and home automation hobbyist from Winnipeg, MB, Canada. I love cats, curling, baseball and Bravo.
+			</div>
+		</div>
+		<br />
+		<div class="about">
+			{{? it.categories.length !== 0}}
+			<ul class="powerline hard-left">
+				<li class="left">
+					<div>Categories</div>
+					<div class="endsection"></div>
+					<div class=""> </div>
+					<div class="endsection"></div>
+				</li>
+			</ul>
+			<br />
+			<div>
+				{{ for(var i = 0; i < it.categories.length; i++) { }}
+				<a href="/category/{{=it.categories[i].url_title}}/"><div class="sidebar_subtitle">{{=it.categories[i].category}}</div></a>
+				{{ } }}
+				{{?}}
+			</div>
+		</div>
+		<br />
+		<div class="about">
+			<ul class="powerline hard-left">
+				<li class="left">
+					<div>Recent Posts</div>
+					<div class="endsection"></div>
+					<div class=""> </div>
+					<div class="endsection"></div>
+				</li>
+			</ul>
+			<br>
+			<div>
+				{{ for(var i = 0; i < it.recent_posts.length; i++) { }}
+				<a href="/post/{{=it.recent_posts[i].post_url}}/"><div class="sidebar_subtitle">{{=it.recent_posts[i].title}}</div></a>
+				{{ } }}
+			</div>
+		</div>
+		<div class="about">
+			<a href="/list/"><div class="sidebar_title">All Posts</div></a>
+		</div>
+
+		<br />
+		<div class="about">
+			<ul class="powerline hard-left">
+				<li class="left">
+					<div>Contact</div>
+					<div class="endsection"></div>
+					<div class=""> </div>
+					<div class="endsection"></div>
+				</li>
+			</ul>
+			<br />
+			<div>contact me at:<br />ward.craig.j {at} gmail.com</div>
+		</div>
+		<br />
+	</div>
+	<div class="col-xs-12 col-md-9">
+		{{=it.content}}
+	</div>
+</div>
+{{=it.footer}}
