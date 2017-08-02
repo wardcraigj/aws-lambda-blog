@@ -1,0 +1,148 @@
+@mixin powerline-rules($bg, $fg, $fg2, $text, $text2, $center-fg: $color-powerline-center-fg, $center-text: $color-powerline-center-text) {
+	a{
+		color: inherit;
+		text-decoration: none;
+	}
+	list-style: none;
+	padding: 0;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: box;
+	display: flex;
+	-webkit-box-pack: justify;
+	-moz-box-pack: justify;
+	-o-box-pack: justify;
+	-ms-flex-pack: justify;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+	-webkit-box-lines: single;
+	-moz-box-lines: single;
+	-o-box-lines: single;
+	-webkit-flex-wrap: nowrap;
+	-ms-flex-wrap: nowrap;
+	flex-wrap: nowrap;
+	height: 1.5em;
+	line-height: 1.5em;
+	/* center bg-color */
+	background-color: $bg;
+    color: $text;
+    overflow: hidden;
+
+	&-top{
+		top: 0;
+	}
+	&-bottom{
+		bottom: 0;
+	}
+	left: 0;
+	right: 0;
+	margin: 0;
+	.left, .right {
+		white-space: nowrap;
+		display: -webkit-box;
+		display: -moz-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: box;
+		display: flex;
+	}
+	.shrinkable {
+		white-space: nowrap;
+		overflow: hidden;
+		-o-text-overflow: ellipsis;
+		text-overflow: ellipsis;
+		max-width: 2em;
+		-webkit-transition: max-width 1s ease-in-out;
+		-moz-transition: max-width 1s ease-in-out;
+		-o-transition: max-width 1s ease-in-out;
+		-ms-transition: max-width 1s ease-in-out;
+		transition: max-width 1s ease-in-out;
+		&:hover {
+			max-width: 1000px;
+		}
+	}
+	.center {
+		white-space: nowrap;
+		overflow: hidden;
+		-o-text-overflow: ellipsis;
+		text-overflow: ellipsis;
+	}
+	.left .endsection {
+		position: relative;
+		width: 0;
+		height: 0;
+		border-top: 0.8em solid transparent;
+		border-bottom: 0.8em solid transparent;
+		border-left: 0.8em solid;
+	}
+	.right .endsection {
+		position: relative;
+		width: 0;
+		height: 0;
+		border-top: 0.8em solid transparent;
+		border-right: 0.8em solid;
+		border-bottom: 0.8em solid transparent;
+	}
+	div:not(.endsection) {
+		padding: 0 14px;
+	}
+	.left div {
+		&:first-child {
+			background-color: $fg;
+			+ .endsection {
+				border-left-color:$fg;
+				background-color: $fg2;
+			}
+		}
+		background-color: $fg2;
+		+ .endsection {
+			border-left-color: $fg2;
+			background-color: $bg;
+
+		}
+	}
+	.center {
+		background-color: $center-fg;
+		color: $center-text;
+	}
+	.right {
+		.endsection:first-child {
+			border-right-color: $fg2;
+		}
+		div:nth-child(2) {
+			background-color: $fg2;
+			color: $text2;
+			+ .endsection {
+				background-color: $fg2;
+				border-right-color: $fg;
+				+ div {
+					background-color: $fg;
+				}
+
+			}
+		}
+	}
+}
+
+.powerline {
+	@include powerline-rules($body-bg, $purple, $dark-purple, $color-powerline-text-light,$color-powerline-text-light);
+}
+
+.powerline-full {
+	bottom:0;
+    position:fixed;
+    z-index:150;
+    _position:absolute;
+    _top:expression(eval(document.documentElement.scrollTop+
+        (document.documentElement.clientHeight-this.offsetHeight)));
+    @include powerline-rules($color-powerline-center-fg, $color-powerline-main, $color-powerline-bg-grey, $color-powerline-text-dark,$color-powerline-text-light);
+}
+.box {
+    padding: 0 1em;
+    background-color: $color-powerline-bg-grey;
+    border-style: solid;
+    border-color: $color-powerline-text-light;
+    border-image-repeat: round;
+}

@@ -15,7 +15,10 @@ var s3 = new AWS.S3({
 var auth = require('../../lib/auth.js');
 
 exports.handler = (event, context, callback) => {
-    // STAGE VARIABLES FROM API GATEWAY
+    // STAGE VARIABLES FROM API GATEWAYa
+        console.log("event:");
+        	console.log(event);
+
     var stage = event.stage;
     var signing_key = event.signing_key;
     var cookie = event.cookie;
@@ -45,12 +48,11 @@ exports.handler = (event, context, callback) => {
         date = moment(date).valueOf();
       }
         console.log("post desc: " + post_meta_description);
-        console.log(event);
       if(!post_id){ // NEW POST
         post_id = yield addBlogPostToDB(title, date, categories, post_status, post_meta_description);
       }else{
       	var old_post = yield getBlogPostFromDB(post_id);
-      	console.log(old_post);
+      	console.log("old post: " + old_post);
         yield updateBlogPostInDB(old_post.post_id, old_post.date, title, date, categories, post_status, post_meta_description);
       }
 
