@@ -3,7 +3,7 @@ var co = require('co');
 var shortid = require('shortid');
 shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
 
-var moment = require('moment');
+var moment = require('moment-timezone');
 var getSlug = require('speakingurl');
 
 var AWS = require('aws-sdk');
@@ -43,9 +43,9 @@ exports.handler = (event, context, callback) => {
       var user = yield auth(signing_key, cookie, token_name);
 
       if(!date){
-        date = moment().valueOf();
+        date = moment().tz('America/Winnipeg').valueOf();
       }else{
-        date = moment(date).valueOf();
+        date = moment(date).tz('America/Winnipeg').valueOf();
       }
         console.log("post desc: " + post_meta_description);
       if(!post_id){ // NEW POST

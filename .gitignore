@@ -46,3 +46,5 @@ credentials.csv
 deletelambdas\.js
 
 install_config\.js
+
+public/static/js/fontawesome/
