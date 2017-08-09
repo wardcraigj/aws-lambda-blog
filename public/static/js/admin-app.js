@@ -635,11 +635,12 @@ app.controller('postController', ['$scope', '$http', '$location', '$timeout', '$
 					})
 				})
 			}
-
+			var d = new Date();
+			var n = d.getTimezoneOffset()*60000;
 			if($scope.post_id){
 				Promise.all([getPostAdmin($scope.post_id), getCategories()]).then(values => {
 					$timeout(function(){
-						picker.set('select', $scope.post.date);
+						picker.set('select', new Date($scope.post.date + n));
 						$('#categories_select').material_select();
 					}, 0);
 
@@ -663,7 +664,7 @@ app.controller('postController', ['$scope', '$http', '$location', '$timeout', '$
 			}else{
 				getCategories().then(function(){
 					$timeout(function(){
-						picker.set('select', $scope.post.date);
+						picker.set('select', new Date($scope.post.date + n));
 						$('#categories_select').material_select();
 					}, 0);
 				})
@@ -683,7 +684,7 @@ app.controller('postController', ['$scope', '$http', '$location', '$timeout', '$
 			$scope.closeSubmitPostPanel = function(){
 				$scope.submitPostPanelOpen = false;
 				$( ".submit_post_panel" ).animate({
-					bottom: "-=300",
+					bottom: "-=450",
 				  }, 450, 'swing', function() {});
 
 			}
@@ -691,7 +692,7 @@ app.controller('postController', ['$scope', '$http', '$location', '$timeout', '$
 			$scope.openSubmitPostPanel = function(){
 				$scope.submitPostPanelOpen = true;
 				$( ".submit_post_panel" ).animate({
-					bottom: "+=300",
+					bottom: "+=450",
 				  }, 450, 'swing', function() {});
 			}
 

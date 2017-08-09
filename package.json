@@ -45,5 +45,7 @@
     "webpack-aws-lambda-upload-plugin": "git+https://github.com/sirceljm/webpack-aws-lambda-upload-plugin.git",
     "webpack-to-memory": "^1.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "moment-timezone": "^0.5.13"
+  }
 }
