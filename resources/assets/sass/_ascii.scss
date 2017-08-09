@@ -1,0 +1,68 @@
+.ascii-table {
+  font: medium/1 monospace;
+  margin: 1em;
+  display: inline-block;
+  position: relative;
+  table {
+    border-collapse: collapse;
+  }
+  td {
+    border: 1px dashed #000;
+    padding: .5em;
+    position: relative;
+  }
+  tr {
+    td {
+      &:before {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        content: "";
+        background-image: url(http://i.stack.imgur.com/2OGdZ.png);
+        background-color: rgba(255, 127, 0, 0.4);
+        top: -8px;
+        left: -8px;
+      }
+      &:last-child:after {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        content: "";
+        background-image: url(http://i.stack.imgur.com/2OGdZ.png);
+        background-color: rgba(255, 63, 63, 0.4);
+        bottom: -8px;
+        right: -8px;
+      }
+    }
+    &:last-child td:after {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      content: "";
+      background-image: url(http://i.stack.imgur.com/2OGdZ.png);
+      background-color: rgba(255, 63, 63, 0.4);
+      bottom: -8px;
+      right: -8px;
+    }
+  }
+  &:before {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    content: "";
+    background-image: url(http://i.stack.imgur.com/2OGdZ.png);
+    background-color: rgba(255, 127, 0, 0.8);
+    top: -7px;
+    right: -7px;
+  }
+  &:after {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    content: "";
+    background-image: url(http://i.stack.imgur.com/2OGdZ.png);
+    background-color: rgba(255, 63, 63, 0.8);
+    bottom: -7px;
+    left: -7px;
+  }
+}

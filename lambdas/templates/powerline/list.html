@@ -1,0 +1,22 @@
+{{ for(var i = 0; i < it.posts.length; i++) { }}
+<div class="post listing">
+	<div class="row">
+		<div class="col-xs-10"><h1><a href="/post/{{=it.posts[i].post_url}}">{{=it.posts[i].title}}</a></h1></div>
+		<div class="col-xs-2 hard-right dateline hidden-xs-down">
+
+			<div class="dateline-container">
+				<ul class="powerline">
+					<li class="right">
+						<div class="endsection"></div>
+						<div></div>
+						<div class="endsection"></div>
+						<div class="">{{=it.moment(it.posts[i].date).add(1, 'minute').format('D MMMM YYYY')}}</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+{{ } }}
+
+

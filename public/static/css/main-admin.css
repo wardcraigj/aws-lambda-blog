@@ -14,7 +14,7 @@
 
 body{
 	background-color: white;
-	-webkit-user-select: none; /* Chrome/Safari */        
+	-webkit-user-select: none; /* Chrome/Safari */
 	-moz-user-select: none; /* Firefox */
 	-ms-user-select: none; /* IE10+ */
 
@@ -57,14 +57,14 @@ body{
     box-shadow: 0 0px 5px 0 rgba(0,0,0,0.16),0 0px 10px 0 rgba(0,0,0,0.12);
     /*padding-left: 10px;
     margin-left: -10px !important;*/
-    
+
 }
 
 .menu_header{
     background-color: #efefef;
 	border-bottom: 1px solid #fff;
     box-shadow: 1px 0px 3px #808080;
-    
+
 }
 
 .menu_header_dropdown_icon{
@@ -141,9 +141,9 @@ body{
 
 .submit_post_panel{
 	position: fixed;
-	height: 322px;
+	height: 459px;
 	width: 100%;
-	bottom: -300px;
+	bottom: -450px;
 	margin: 0px;
 	left: 0px;
 	z-index: 1;
@@ -182,7 +182,7 @@ body{
 }
 
 .submit_panel_title{
-	margin: 0px; 
+	margin: 0px;
 	display: inline-block;
 	vertical-align: middle;
 }
@@ -341,7 +341,7 @@ height: 1000px;
 	overflow-x: hidden;
 	position: relative;
 }
-	
+
 @media screen and (max-width: 600px) {
 	.main_panel_wrap{
 		height: calc(100vh - 84px);

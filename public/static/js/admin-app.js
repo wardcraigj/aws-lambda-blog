@@ -1,4 +1,4 @@
-﻿Array.prototype.swap = function (index1, index2) {
+Array.prototype.swap = function (index1, index2) {
     if (index1 <= this.length && index2 <= this.length) {
         var temp = this[index2];
         this[index2] = this[index1];
@@ -15,7 +15,7 @@ function addEvent(elem, event, fn){
 	}
 }
 
-var app = angular.module('app', ['ngCookies', 'ngInputModified', 'color.picker', 'naif.base64'], 
+var app = angular.module('app', ['ngCookies', 'ngInputModified', 'color.picker', 'naif.base64'],
 	function($locationProvider) {
 		$locationProvider.html5Mode({
 		  enabled: true,
@@ -77,20 +77,20 @@ app.controller('mainController', ['$scope', '$http', '$timeout', '$cookies',
 			}, function errorCallback(response) {
 			});
 		}
-		
+
 		$scope.logout = function(){
 			$cookies.remove("token", { path: '/' });
 			window.location = "/";
 		}
-		
+
 		var init = function(){
 			checkIfLoggedIn().then(function(){
 				var moved = 0;
 				$scope.menu_open = false;
 				$scope.display = 'posts';
-				
+
 				$('select').material_select();
-				
+
 				$scope.displayPosts = function(){
 					$("#menu").animate({
 						marginTop: "100vh"
@@ -109,7 +109,7 @@ app.controller('mainController', ['$scope', '$http', '$timeout', '$cookies',
 								$('.dropdown-button').dropdown();
 							})
 						});
-						
+
 					})
 				}
 
@@ -131,10 +131,10 @@ app.controller('mainController', ['$scope', '$http', '$timeout', '$cookies',
 								$('.dropdown-button').dropdown();
 							})
 						});
-						
+
 					})
 				}
-				
+
 				$scope.displaySettings = function(){
 					$("#menu").animate({
 						marginTop: "100vh"
@@ -153,22 +153,22 @@ app.controller('mainController', ['$scope', '$http', '$timeout', '$cookies',
 								$('.dropdown-button').dropdown();
 							})
 						});
-						
+
 					})
 				}
-				
+
 				$scope.posts = [];
 				$scope.addPost = function(){
 					window.location.href = "/admin/post";
 				}
-				
+
 				$scope.editPost = function(post_id, date){
 					window.location.href = "/admin/post/?post_id="+post_id+"&date="+date;
 				}
-				
+
 				$scope.categories = [];
 				$scope.new_category = "";
-				
+
 				var getCategories = function(){
 					return new Promise(function(resolve, reject){
 						$http({
@@ -181,7 +181,7 @@ app.controller('mainController', ['$scope', '$http', '$timeout', '$cookies',
 						})
 					});
 				}
-				
+
 				var getSettings = function(){
 					return new Promise(function(resolve, reject){
 						$http({
@@ -198,7 +198,7 @@ app.controller('mainController', ['$scope', '$http', '$timeout', '$cookies',
 						})
 					});
 				}
-				
+
 				var getTemplates = function(){
 					return new Promise(function(resolve, reject){
 						$http({
@@ -215,7 +215,7 @@ app.controller('mainController', ['$scope', '$http', '$timeout', '$cookies',
 						})
 					});
 				}
-				
+
 				$scope.saveSettings = function(settings){
 					return new Promise(function(resolve, reject){
 						$http({
@@ -235,7 +235,7 @@ app.controller('mainController', ['$scope', '$http', '$timeout', '$cookies',
 						})
 					});
 				}
-				
+
 				$scope.addCategory = function(new_category){
 					$http({
 					  method: 'POST',
@@ -248,7 +248,7 @@ app.controller('mainController', ['$scope', '$http', '$timeout', '$cookies',
 					}, function errorCallback(response) {
 					});
 				}
-				
+
 				$scope.moveCategory = function(category, index, direction){
 					$scope.moving_categories = true;
 
@@ -269,33 +269,33 @@ app.controller('mainController', ['$scope', '$http', '$timeout', '$cookies',
 						console.log("error");
 					});
 				}
-				
+
 				$scope.editCategory = function(category, index){
 					$scope.editing_categories = true;
 					$scope.categories[index].editing = true;
-					
+
 					var element = document.getElementById('category_input_'+category.category_id);
 
 					$timeout(function(){
 						addEvent(element,'focus',function(){
 						  var that = this;
-						  setTimeout(function(){ 
-							that.selectionStart = that.selectionEnd = 10000; 
-							
+						  setTimeout(function(){
+							that.selectionStart = that.selectionEnd = 10000;
+
 						  }, 0);
-						  
+
 						});
 						element.focus();
 					})
-					
+
 				}
-				
+
 				$scope.editCategorySave = function(category, index){
 					$scope.editing_categories = false;
 					$scope.categories[index].editing = false;
-					
+
 					console.log(category);
-					
+
 					$http({
 					  method: 'POST',
 					  url: '/edit-category',
@@ -304,11 +304,11 @@ app.controller('mainController', ['$scope', '$http', '$timeout', '$cookies',
 						category_name: category.category
 					  }
 					}).then(function successCallback(response) {
-						
+
 					}, function errorCallback(response) {
 					});
 				}
-				
+
 				$scope.deleteCategory = function(category, index){
 					$http({
 					  method: 'POST',
@@ -322,15 +322,15 @@ app.controller('mainController', ['$scope', '$http', '$timeout', '$cookies',
 					}, function errorCallback(response) {
 					});
 				}
-				
-				
-				
-			
-				
+
+
+
+
+
 				$scope.displayDate = function(ts){
 					return moment(ts).format('MMM Do YYYY');
 				}
-				
+
 				var getPosts = function(){
 					return new Promise(function(resolve, reject){
 						$http({
@@ -341,7 +341,7 @@ app.controller('mainController', ['$scope', '$http', '$timeout', '$cookies',
 
 							$timeout(function(){
 							  $('.dropdown-button').dropdown();
-							  
+
 							  var mc = new Hammer(document.getElementById('menu'));
 							  mc.get('pan').set({ direction: Hammer.DIRECTION_VERTICAL });
 
@@ -370,19 +370,19 @@ app.controller('mainController', ['$scope', '$http', '$timeout', '$cookies',
 										}
 									}
 								})
-								
+
 								var prevDeltaTime = 1000;
 								var prevDelta = 0;
 								mc.on('pandown panup', function(ev) {
 									ev.preventDefault();
-									
+
 									if(prevDeltaTime < ev.deltaTime){
 										moved += ev.deltaY - prevDelta;
 									}
-									
+
 									prevDelta = ev.deltaY;
 									prevDeltaTime = ev.deltaTime;
-									
+
 									var mT = 0;
 									if(moved < 0){
 										mT = 0;
@@ -393,12 +393,12 @@ app.controller('mainController', ['$scope', '$http', '$timeout', '$cookies',
 									}else{
 										mT = moved;
 									}
-									
+
 									$("#menu").css({
 										marginTop: mT
 									})
 								});
-								
+
 								mc.on('panend', function(ev){
 									if(ev.deltaY > 0){
 										if(moved > 50){
@@ -432,8 +432,8 @@ app.controller('mainController', ['$scope', '$http', '$timeout', '$cookies',
 											$scope.menu_open = true;
 											$("#menu").animate({
 												marginTop: 335
-											})	
-											
+											})
+
 										}
 									}
 								})
@@ -443,14 +443,14 @@ app.controller('mainController', ['$scope', '$http', '$timeout', '$cookies',
 						}, function errorCallback(response) {
 							reject();
 						})
-						
+
 					});
 				}
-				
+
 				Promise.all([getPosts(), getCategories()]).then(function(results){
 					$scope.posts = results[0];
 					$scope.categories = results[1];
-					
+
 					for(var i = 0; i < $scope.categories.length; i++){
 						$scope.categories[i].no_posts = 0;
 						for(var j = 0; j < $scope.posts.length; j++){
@@ -466,11 +466,11 @@ app.controller('mainController', ['$scope', '$http', '$timeout', '$cookies',
 					$timeout(function(){
 						$('.dropdown-button').dropdown();
 						$('.modal').modal({
-							opacity: .1, 
+							opacity: .1,
 						});
 					})
 				});
-				
+
 				/*
 				 * SETTINGS
 				 */
@@ -482,7 +482,7 @@ app.controller('mainController', ['$scope', '$http', '$timeout', '$cookies',
 						$scope.settings.template.palette = selected_template.palette;
 					}
 				}
-				
+
 				$scope.submitUploadedImage = function(image){
 					$http({
 					  method: 'POST',
@@ -493,20 +493,20 @@ app.controller('mainController', ['$scope', '$http', '$timeout', '$cookies',
 					}).then(function successCallback(response) {
 						$("#uploadImageModal").closeModal();
 						$scope.templates.push(response.data.new_template);
-						
+
 						$timeout(function(){
 							$('#templates_select').material_select();
 						})
-							
+
 						$scope.settings.template.header_image = response.data.new_template.image;
 						$scope.settings.template.palette = response.data.new_template.palette;
 					}, function errorCallback(response) {
 					});
 				}
-				
+
 				getSettings();
 				getTemplates();
-				
+
 				$scope.publishPost = function(post){
 					$http({
 					  method: 'POST',
@@ -519,7 +519,7 @@ app.controller('mainController', ['$scope', '$http', '$timeout', '$cookies',
 					}, function errorCallback(response) {
 					});
 				}
-				
+
 				$scope.unpublishPost = function(post){
 					$http({
 					  method: 'POST',
@@ -532,7 +532,7 @@ app.controller('mainController', ['$scope', '$http', '$timeout', '$cookies',
 					}, function errorCallback(response) {
 					});
 				}
-				
+
 				$scope.deletePost = function(post){
 					$http({
 					  method: 'POST',
@@ -544,16 +544,16 @@ app.controller('mainController', ['$scope', '$http', '$timeout', '$cookies',
 						$scope.posts.splice($scope.posts.indexOf(post), 1);
 					}, function errorCallback(response) {
 					});
-				}			
+				}
 			});
 		}
-		
+
 		init();
 	}]
 );
 
 app.controller('postController', ['$scope', '$http', '$location', '$timeout', '$cookies',
-	function postController($scope, $http, $location, $timeout, $cookies) {	
+	function postController($scope, $http, $location, $timeout, $cookies) {
 		checkIfLoggedIn().then(function(){
 			 var $input = $('.datepicker').pickadate({
 				selectMonths: true,
@@ -561,25 +561,25 @@ app.controller('postController', ['$scope', '$http', '$location', '$timeout', '$
 				format: 'd mmmm, yyyy',
 				formatSubmit: 'dd/mm/yyyy',
 			  });
-			
+
 			var picker = $input.pickadate('picker');
-			
+
 			$scope.post = {
 				status: false
 			};
-			$scope.post_id = $location.search()['post_id'];					
+			$scope.post_id = $location.search()['post_id'];
 			$scope.categories = [];
 			$scope.outputCategories = [];
 			$scope.date = undefined;
-			
+
 			$scope.displayMain = function(){
 				window.location = "/admin";
 			}
-			
+
 			$scope.displayFrontpage = function(){
 				window.location = "/";
 			}
-			
+
 			$scope.postHasCategory = function(post, category_id){
 				if(post.categories){
 					for(var i = 0; i < post.categories.length; i++){
@@ -590,11 +590,11 @@ app.controller('postController', ['$scope', '$http', '$location', '$timeout', '$
 				}
 				return false;
 			}
-			
+
 			ContentTools.IMAGE_UPLOADER = imageUploader;
 			var editor = ContentTools.EditorApp.get();
-			
-			
+
+
 
 			var getPostAdmin = function(post_id, post_date){
 				return new Promise(function(resolve, reject){
@@ -612,135 +612,136 @@ app.controller('postController', ['$scope', '$http', '$location', '$timeout', '$
 						$scope.post.date = response.data.date;
 						$scope.post.categories = response.data.categories;
 						$scope.post_html = response.data.post_html;
-						
+						$scope.post.post_meta_description = response.data.post_meta_description;
+
 						resolve();
 					}, function errorCallback(response) {
 						reject()
 					})
-				}); 
-				
+				});
+
 			}
-			
+
 			var getCategories = function(){
 				return new Promise(function(resolve, reject){
 					$http({
 					  method: 'GET',
 					  url: '/get-categories'
 					}).then(function successCallback(response) {
-						$scope.categories = response.data;		
+						$scope.categories = response.data;
 						resolve();
 					}, function errorCallback(response) {
 						reject();
 					})
 				})
 			}
-			
+
 			if($scope.post_id){
-				Promise.all([getPostAdmin($scope.post_id), getCategories()]).then(values => { 
+				Promise.all([getPostAdmin($scope.post_id), getCategories()]).then(values => {
 					$timeout(function(){
 						picker.set('select', $scope.post.date);
 						$('#categories_select').material_select();
-					}, 0);					  
-				
+					}, 0);
+
 					var selectedCategories = $scope.post.categories;
 					for(var i = 0; i < selectedCategories.length; i++){
 						for(var j = 0; j < $scope.categories.length; j++){
 							if($scope.categories[j].category_id == selectedCategories[i].category_id){
 								$scope.categories[j].ticked = true;
 							}
-							
+
 						}
 					}
-					
+
 					$timeout(function(){
 						var el = document.getElementById("aaa");
 						editor.init('[data-editable]', 'data-name', null, false, el);
 						editor.start();
-									
+
 					}, 0)
 				});
-			}else{		
+			}else{
 				getCategories().then(function(){
 					$timeout(function(){
 						picker.set('select', $scope.post.date);
 						$('#categories_select').material_select();
-					}, 0);	
+					}, 0);
 				})
-				
+
 				var el = document.getElementById("aaa");
 				editor.init('[data-editable]', 'data-name', null, false, el);
 				editor.start();
 			}
 
 
-			
-			
-			
-			
+
+
+
+
 			$scope.submitPostPanelOpen = false;
-			
+
 			$scope.closeSubmitPostPanel = function(){
 				$scope.submitPostPanelOpen = false;
 				$( ".submit_post_panel" ).animate({
 					bottom: "-=300",
-				  }, 300, 'swing', function() {});
+				  }, 450, 'swing', function() {});
 
 			}
-			
+
 			$scope.openSubmitPostPanel = function(){
 				$scope.submitPostPanelOpen = true;
 				$( ".submit_post_panel" ).animate({
 					bottom: "+=300",
-				  }, 300, 'swing', function() {});
+				  }, 450, 'swing', function() {});
 			}
-			
+
 			editor.addEventListener('saved', function (ev) {
 				console.log("saved");
-				
+
 				var regions = ev.detail().regions;
 				console.log(regions['article-body']);
-				
+
 				if(regions['article-body']){
 					$scope.post.content = regions['article-body'];
 				}
-				
+
 				if(!$scope.post.content){
 					$('#toast-container').empty();
 					Materialize.toast(
-						$('<span><i class="fa fa-exclamation toast_icon"></i>You need to write something first!</span>'), 
-						4000, 
+						$('<span><i class="fa fa-exclamation toast_icon"></i>You need to write something first!</span>'),
+						4000,
 						'orange lighten-1'
 					);
 				}else if(!$scope.post.title){
 					$('#toast-container').empty();
 					Materialize.toast(
-						$('<span><i class="fa fa-exclamation toast_icon"></i>Title of your blog post is missing!</span>'), 
-						4000, 
+						$('<span><i class="fa fa-exclamation toast_icon"></i>Title of your blog post is missing!</span>'),
+						4000,
 						'orange lighten-1'
 					);
 				}else if(!$scope.post.categories){
 					$('#toast-container').empty();
 					Materialize.toast(
-						$('<span><i class="fa fa-exclamation toast_icon"></i>Please select at least one category!</span>'), 
-						4000, 
+						$('<span><i class="fa fa-exclamation toast_icon"></i>Please select at least one category!</span>'),
+						4000,
 						'orange lighten-1'
 					);
 				}else if(!$scope.post.date){
 					$('#toast-container').empty();
 					Materialize.toast(
-						$('<span><i class="fa fa-exclamation toast_icon"></i>You need to enter a date of submittion!</span>'), 
-						4000, 
+						$('<span><i class="fa fa-exclamation toast_icon"></i>You need to enter a date of submittion!</span>'),
+						4000,
 						'orange lighten-1'
 					);
 				}else{
 					$('#toast-container').empty();
-					
+
 					Materialize.toast(
-						$('<span><i class="fa fa-spinner fa-pulse toast_icon"></i>Submitting your post!</span>'), 
-						4000000, 
+						$('<span><i class="fa fa-spinner fa-pulse toast_icon"></i>Submitting your post!</span>'),
+						4000000,
 						'light-blue accent-2'
 					);
-					
+
 					$http({
 					  method: 'POST',
 					  url: '/submit-post',
@@ -750,6 +751,7 @@ app.controller('postController', ['$scope', '$http', '$location', '$timeout', '$
 						title: $scope.post.title,
 						categories: $scope.post.categories,
 						date: $scope.post.date,
+						post_meta_description: $scope.post.post_meta_description,
 						html: $scope.post.content
 					  }
 					}).then(function successCallback(response) {
@@ -757,8 +759,8 @@ app.controller('postController', ['$scope', '$http', '$location', '$timeout', '$
 							if(response.data.status == "success"){
 								$('#toast-container').empty();
 								Materialize.toast(
-									$('<span><i class="fa fa-check toast_icon"></i>Your post was submitted!</span>'), 
-									1000, 
+									$('<span><i class="fa fa-check toast_icon"></i>Your post was submitted!</span>'),
+									1000,
 									'green lighten-1',
 									function(){
 										window.location.href = "/admin/";
@@ -767,11 +769,11 @@ app.controller('postController', ['$scope', '$http', '$location', '$timeout', '$
 							}else{
 								$('#toast-container').empty();
 								Materialize.toast(
-									$('<span><i class="fa fa-check toast_icon"></i>There was an error!</span>'), 
-									4000, 
+									$('<span><i class="fa fa-check toast_icon"></i>There was an error!</span>'),
+									4000,
 									'orange lighten-1',
 									function(){
-										
+
 									}
 								);
 							}
@@ -780,12 +782,12 @@ app.controller('postController', ['$scope', '$http', '$location', '$timeout', '$
 					});
 				}
 			});
-			
+
 			$scope.submitPost = function(){
 				editor.save(true);
 			}
-			
-			
+
+
 			function imageUploader(dialog) {
 				 var image, xhr, xhrComplete, xhrProgress;
 
@@ -841,7 +843,7 @@ app.controller('postController', ['$scope', '$http', '$location', '$timeout', '$
 					// Build the form data to post to the server
 					formData = new FormData();
 					formData.append('image', file);
-					
+
 					var reader  = new FileReader();
 
 					  reader.addEventListener("load", function () {
@@ -854,16 +856,16 @@ app.controller('postController', ['$scope', '$http', '$location', '$timeout', '$
 						xhr.send(JSON.stringify({
 							image: reader.result
 						}));
-						
+
 					  }, false);
-  
+
 					  if (file) {
 						  reader.readAsDataURL(file);
 					  }
 
-					
+
 				});
-				
+
 				dialog.addEventListener('imageuploader.cancelupload', function () {
 					// Cancel the current upload
 
@@ -877,13 +879,13 @@ app.controller('postController', ['$scope', '$http', '$location', '$timeout', '$
 					// Set the dialog to empty
 					dialog.state('empty');
 				});
-				
+
 				dialog.addEventListener('imageuploader.clear', function () {
 					// Clear the current image
 					dialog.clear();
 					image = null;
 				});
-				
+
 				function rotateImage(direction) {
 					// Request a rotated version of the image from the server
 					var formData;
@@ -946,7 +948,7 @@ app.controller('postController', ['$scope', '$http', '$location', '$timeout', '$
 				dialog.addEventListener('imageuploader.rotatecw', function () {
 					rotateImage('CW');
 				});
-				
+
 				dialog.addEventListener('imageuploader.save', function () {
 					console.log(image);
 					dialog.save(
@@ -956,8 +958,8 @@ app.controller('postController', ['$scope', '$http', '$location', '$timeout', '$
 							'data-ce-max-width': image.size[0]
 						}
 					)
-					return; 
-					
+					return;
+
 					var crop, cropRegion, formData;
 
 					// Define a function to handle the request completion
@@ -981,7 +983,7 @@ app.controller('postController', ['$scope', '$http', '$location', '$timeout', '$
 
 							// Trigger the save event against the dialog with details of the
 							// image to be inserted.
-							
+
 
 						} else {
 							// The request failed, notify the user
