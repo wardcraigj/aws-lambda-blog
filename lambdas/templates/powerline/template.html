@@ -1,192 +1,212 @@
 <!DOCTYPE html>
-<html lang="en-US" class=" html_boxed ">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="robots" content="index, follow" />
-		<title>S-Media blog | Software, electronics and 3D printing explorations</title>
-
-		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato" />
-
-		<link rel="stylesheet" href="/static/css/grid.css" type="text/css" media="screen">
-		<link rel="stylesheet" href="/static/css/base.css" type="text/css" media="screen">
-		<link rel="stylesheet" href="/static/css/layout.css" type="text/css" media="screen">
-		<link rel="stylesheet" href="/static/css/sentence.css" type="text/css" media="screen">
-
-		<link rel="stylesheet" href="/static/css/main.css" type="text/css" media="screen">
-	</head>
-	<body id="top" class="home blog right_sidebar boxed droid_sans">
-		<div id="wrap_all">
-			<div class="container_wrap">
-				<div class="container">
-					<div id="overflow_bg"></div>
-					<div id="sidebar_bg"></div>
-					<div id="header" class="seven units alpha offset-by-one">
-
-						<h1 class="logo"><a href="/"><img src="/static/img/logo-v2.2.png" alt="S-Media blog"></a></h1>
-						<ul class="social_bookmarks">
-							<li class="rss"><a href="/feed/">RSS</a></li>
-						</ul>							
-						<div class="main_menu main_menu" data-selectname="Select a page">
-							<div class="menu-main-menu-container">
-								<ul id="menu-main-menu" class="menu no_description_menu">
-									{{ for(var i = 0; i < it.categories.length; i++) { }}
-									<li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-										<a href="/category/{{=it.categories[i].url_title}}/">{{=it.categories[i].category}}</a>
-									</li>
-									{{ } }}
-									<!--<li id="menu-item-60" class="menu-item menu-item-type-taxonomy menu-item-object-category">
-										<a href="/category/software-development/"><strong>Software development</strong></a>
-									</li>
-									<li id="menu-item-234" class="menu-item menu-item-type-post_type menu-item-object-page">
-										<a href="/contact/"><strong>Contact</strong></a>
-									</li>-->
-								</ul>
-								<select id="mobileMenu_menu-main-menu" class="mobileMenu" style="display: none;">
-									<option value="">Select a page</option>
-									<option value="/category/software-development/">Software development</option>
-									<option value="/contact/">Contact</option>
-								</select>
-							</div>
-						</div>
-					</div>
-					<div id="primary" class="eight alpha units">
-						<div id='main'>		
-							<div class='template-blog inner_container'>	
-								<div class='content eight alpha units'>
-									{{ for(var i = 0; i < it.posts.length; i++) { }}
-									<div class='post-entry post-entry-type-standard post-entry-236'>
-										<span class='entry-border-overflow extralight-border'></span>
-										<div class="one unit alpha blog-meta">
-								        	
-								        	<div class="side-container side-container-date">
-								        		
-								        		<div class="side-container-inner">
-								        		
-								        			<span class="date-day">{{=it.moment(it.posts[i].date).add(1, 'minute').format('D')}}</span>
-							   						<span class="date-month">{{=it.moment(it.posts[i].date).format('MMM')}}</span>
-							   						
-								        		</div>
-								        		
-								        	</div>
-											
-										</div>
-										<div class="seven units entry-content">	
-											<h1><a href="/post/{{=it.posts[i].post_url}}">{{=it.posts[i].title}}</a></h1>
-											{{=it.posts_html[i]}}
-
-											<a href="/post/{{=it.posts[i].post_url}}#disqus_thread">Comments</a>
-										</div>
-										
-									</div>
-									{{ } }}
-								</div>
-							</div>
-						</div>
-					</div>
-					<div id="secondary">
-						<div class="sidebar">
-							<div class="inner_sidebar extralight-border">
-								<div class="main_menu main_menu" data-selectname="Select a page">
-									<div class="menu-main-menu-container">
-										<ul id="menu-main-menu" class="menu no_description_menu">
-											<li id="menu-item-234" class="menu-item menu-item-type-post_type menu-item-object-page">
-												<a href="/about/"><strong>About me</strong></a>
-											</li>
-											<li id="menu-item-234" class="menu-item menu-item-type-post_type menu-item-object-page">
-												<a href="/projects/"><strong>Projects</strong></a>
-											</li>
-											<li id="menu-item-235" class="menu-item menu-item-type-post_type menu-item-object-page">
-												<a href="/contact/"><strong>Contact</strong></a>
-											</li>
-										</ul>	
-									</div>
-								</div>
-								<div id="recent-posts-2" class="main_menu main_menu">
-									<h3 class="widgettitle">Categories</h3>
-									<ul id="menu-main-menu" class="menu no_description_menu">
-										{{ for(var i = 0; i < it.categories.length; i++) { }}
-										<li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-											<a href="/category/{{=it.categories[i].url_title}}/"><strong>{{=it.categories[i].category}}</strong></a>
-										</li>
-										{{ } }}
-									</ul>
-								</div>
-								<div id="recent-posts-2" class="widget widget_recent_entries">
-									<h3 class="widgettitle">Recent Posts</h3>
-									<ul>
-										{{ for(var i = 0; i < it.recent_posts.length; i++) { }}
-										<li>
-											<a href="/post/{{=it.recent_posts[i].post_url}}/">{{=it.recent_posts[i].title}}</a>
-										</li>
-										{{ } }}
-									</ul>
-									<span class="seperator extralight-border"></span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div id="footer" class="container_wrap ">
-					<div class="container">
-						<div class="one_fourth first">
-							<div class="widget">
-								<h3 class="widgettitle">Interesting links</h3>
-								<span class="minitext">Besides are some interesting links for you! Enjoy your stay :)</span>
-							</div>
-						</div>
-						<div class="one_fourth ">
-							<div class="widget widget_pages">
-								<h3 class="widgettitle">Pages</h3>
-								<ul>
-									<li class="page_item">
-										<a href="/contact/">About me</a>
-									</li>
-									<li class="page_item">
-										<a href="/contact/">Projects</a>
-									</li>
-									<li class="page_item">
-										<a href="/contact/">Contact</a>
-									</li>
-								</ul>
-								<span class="seperator extralight-border"></span>
-							</div>
-						</div>
-						<div class="one_fourth ">
-							<div class="widget widget_categories">
-								<h3 class="widgettitle">Categories</h3>
-								<ul>
-									{{ for(var i = 0; i < it.categories.length; i++) { }}
-									<li class="menu-item menu-item-type-post_type menu-item-object-page">
-										<a href="/category/{{=it.categories[i].url_title}}/">{{=it.categories[i].category}}</a>
-									</li>
-									{{ } }}
-								</ul>
-								<span class="seperator extralight-border"></span>
-							</div>
-						</div>
-						<div class="one_fourth ">
-							<div id="nav_menu-2" class="widget widget_nav_menu">
-								<h3 class="widgettitle">More links</h3>
-								<div class="menu-links-container">
-									<ul id="menu-links" class="menu">
-										<li id="menu-item-63" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-63">
-											<a href="https://github.com/sirceljm">Github</a>
-										</li>
-									</ul>
-								</div>
-								<span class="seperator extralight-border"></span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div id="socket" class="container_wrap ">
-					<div class="container">
-						<span class="copyright">© Copyright - <a href="/">www.s-media.si</a></span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<script id="dsq-count-scr" src="//s-media.disqus.com/count.js" async></script>
-	</body>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="robots" content="index, follow"/>
+    <title>Insteon 2-wire Dimmer Review - Craig J. Midwinter</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="/static/js/powerline.js" type="text/javascript"></script>
+    <link href="/static/css/powerline.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/fontawesome/css/font-awesome-brands.css">
+    <link rel="stylesheet" href="/static/fontawesome/css/font-awesome-core.css">
+    <script>(function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-103046502-1', 'auto');
+    ga('send', 'pageview');</script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <meta name="description" content="The Insteon 2-wire dimmer is a great solution for adding smart lighting to your home automation set-up in houses with no common/neutral wire."/>
+</head>
+<body>
+<div class="container-fluid"><a name="top"></a>
+    <div class="content">
+        <div class="row">
+            <div class="col-xs-12"><h1><a class="page-title" href="/">Craig J. Midwinter</a></h1>
+                <ul class="powerline hidden-sm-down">
+                    <li class="left">
+                        <div>Home Automation and programming projects</div>
+                        <div class="endsection"></div>
+                        <div class=""></div>
+                        <div class="endsection"></div>
+                    </li>
+                </ul>
+                <ul class="powerline powerline-small hidden-md-up">
+                    <li class="left">
+                        <div>Home Automation and programming projects</div>
+                        <div class="endsection"></div>
+                        <div class=""></div>
+                        <div class="endsection"></div>
+                    </li>
+                </ul>
+                <div class="menu hidden-lg-up">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="glyphicon glyphicon-menu-hamburger"></span></button>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                            <h6 class="dropdown-header">Categories</h6>
+                            <a class="dropdown-item" href="/category/software-development/">Software Development</a><a class="dropdown-item" href="/category/home-automation/">Home Automation</a><a class="dropdown-item" href="/category/reviews/">Reviews</a>
+                            <div class="dropdown-divider"></div>
+                            <h6 class="dropdown-header">Recent Posts</h6>
+                            <a class="dropdown-item" href="/post/insteon-2-wire-dimmer-2474dwh_rJUJ27ZIb/">Insteon 2-wire Dimmer Review</a><a class="dropdown-item" href="/post/raspberry-pi-jukebox_ByOr@ECHW/">Raspberry Pi Jukebox</a><a class="dropdown-item" href="/post/congratulations_B1qAwQagx/">Serverless Blog! AWS Lambda, API Gateway, CloudFront and S3</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 hidden-md-down sidebar"><br/>
+                <div class="about">
+                    <ul class="powerline powerline-small hard-left">
+                        <li class="left">
+                            <div>Categories</div>
+                            <div class="endsection"></div>
+                            <div class=""></div>
+                            <div class="endsection"></div>
+                        </li>
+                    </ul>
+                    <br/>
+                    <div><a href="/category/software-development/">
+                        <div class="sidebar-item">Software Development</div>
+                    </a><a href="/category/home-automation/">
+                        <div class="sidebar-item">Home Automation</div>
+                    </a><a href="/category/reviews/">
+                        <div class="sidebar-item">Reviews</div>
+                    </a></div>
+                </div>
+                <br/>
+                <div class="about">
+                    <ul class="powerline powerline-small hard-left">
+                        <li class="left">
+                            <div>Recent Posts</div>
+                            <div class="endsection"></div>
+                            <div class=""></div>
+                            <div class="endsection"></div>
+                        </li>
+                    </ul>
+                    <br>
+                    <div><a href="/post/insteon-2-wire-dimmer-2474dwh_rJUJ27ZIb/">
+                        <div class="sidebar-item">Insteon 2-wire Dimmer Review</div>
+                    </a><a href="/post/raspberry-pi-jukebox_ByOr@ECHW/">
+                        <div class="sidebar-item">Raspberry Pi Jukebox</div>
+                    </a><a href="/post/congratulations_B1qAwQagx/">
+                        <div class="sidebar-item">Serverless Blog! AWS Lambda, API Gateway, CloudFront and S3</div>
+                    </a><a href="/list/">
+                        <div class="sidebar-item">All Posts</div>
+                    </a></div>
+                </div>
+                <br/>
+                <div class="about">
+                    <ul class="powerline powerline-small hard-left hidden-md-down">
+                        <li class="left">
+                            <div>About</div>
+                            <div class="endsection"></div>
+                            <div class=""></div>
+                            <div class="endsection"></div>
+                        </li>
+                    </ul>
+                    <br>
+                    <div class="sidebar-item">I'm a Developer and home automation hobbyist from Winnipeg, MB, Canada. I love cats, curling, baseball and Bravo.</div>
+                    <div class="sidebar-item">contact me at:<br/>ward.craig.j {at} gmail.com</div>
+                </div>
+                <br/><img src="/static/me.jpg" alt="The personal blog of Craig J. Midwinter" class="hidden-md-down"/><br/>
+            </div>
+            <div class="col-xs-12 col-lg-10">
+                <div class="post listing">
+                    <div class="row">
+                        <div class="col-xs-10"><h1 class="post-title">Insteon 2-wire Dimmer Review</h1></div>
+                        <div class="col-xs-2 hard-right dateline hidden-xs-down">
+                            <div class="dateline-container">
+                                <ul class="powerline">
+                                    <li class="right">
+                                        <div class="endsection"></div>
+                                        <div></div>
+                                        <div class="endsection"></div>
+                                        <div class="">22 July 2017</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div><p>
+                        I've got an old house with old electrical, and when it comes to smart lighting, the lack of common/neutral wire is a bit limiting. Luckily,
+                        <a href="http://amzn.to/2gSHaNb">Insteon makes these wicked little 2-wire dimmers</a> that work in any traditional 2-wire box.
+                    </p>
+                        <img class="align-right" data-ce-max-width="1200" height="415" src="/images/rJiwlVb8Z.png" width="415">
+                        <p>
+                            I've got 5 of these suckers in my house, and I can't say enough about them. If you are looking to teach an old house new tricks, these are definitely a great choice. These dimmers are RF-only, in contrast to the dual band in the normal Insteon dimmer switch offering, but I have to say, the range and reliability doesn't suffer a bit. One of these switches in my installation is pretty far from the hub and other switches and I have never had an issue communicating with it.
+                        </p>
+                        <p>
+                            Now, it should be noted that if you don't already have an Insteon hub or PLM of some sort you'll need one in order to take advantage of the smart capabilities of this switch, but without one they'll still function like a normal dimmer. I've notice the
+                            <a href="http://amzn.to/2eEjB9T">Insteon starter kits</a> seem to go on sale every so often on Amazon (as of this posting it's $40 USD), and they include the hub and two plug-in dimmer modules (for lamps).
+                        </p>
+                        <p>
+                            Another thing to note is that these are not compatible replacements for three-way switches. By the looks of the reviews on the Amazon listing, it seems as though people have been burnt by that before.
+                        </p>
+                        <h2>
+                            Pros
+                        </h2>
+                        <ul>
+                            <li>
+                                Fast and Reliable - Have had no issues communicating with these, and they always respond really quickly
+                            </li>
+                            <li>
+                                Compatible - Works great in houses with older wiring
+                            </li>
+                            <li>
+                                Great range - I'm still able to communicate with these dimmers even when they aren't too close to another device
+                            </li>
+                        </ul>
+                        <h2>
+                            Cons
+                        </h2>
+                        <ul>
+                            <li>
+                                Lack dual band - these won't act as a repeater in your installation
+                            </li>
+                            <li>
+                                Pricey - these dimmers tend to be slightly more expensive than other smart dimmer options
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="share_icons">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://midwinter.cc/post/insteon-2-wire-dimmer-2474dwh_rJUJ27ZIb" onclick="window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600'); return false;"><i class="fa facebook-f"></i></a><a href="https://plus.google.com/share?url=https://midwinter.cc/post/insteon-2-wire-dimmer-2474dwh_rJUJ27ZIb" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><i class="fa google-plus"></i></a><a href="https://www.linkedin.com/shareArticle?mini=true&url=https://midwinter.cc/post/insteon-2-wire-dimmer-2474dwh_rJUJ27ZIb" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><i class="fa linkedin"></i></a><a href="http://twitter.com/share?text=https://midwinter.cc/post/insteon-2-wire-dimmer-2474dwh_rJUJ27ZIb" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><i class="fa twitter"></i></a><!--<i class="fa fa-envelope"></i>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 spacer"></div>
+        </div>
+        <ul class="powerline-full powerline-bottom">
+            <li class="left">
+                <div><a href="/" class="hidden-sm-down">wardcraigj/blog</a> <a class="font-white" href="/">*home*</a>
+                </div>
+                <div class="endsection"></div>
+                <div><a href="#">dev</a></div>
+                <div class="shrinkable hidden-sm-down"><a href="/">Home Automation and programming projects</a></div>
+                <div class="endsection"></div>
+            </li>
+            <div class="center"><a href="https://github.com/wardcraigj"> 8e4c32f32ec869fe521fb4d3c0a69406830b4178</a>
+            </div>
+            <li class="right">
+                <div class="endsection"></div>
+                <div><a href="/"> 1 : 0</a></div>
+                <div class="endsection"></div>
+                <div><a href="#top">Top</a></div>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
 </html>
-	

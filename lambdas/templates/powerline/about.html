@@ -1,39 +1,12 @@
-				<div class="row content">
-					<div class="col s12 m9 l9 content_column">
-						<div class="post">
-							<div class="post_title">
-								<div class="post_name"><h1>About me</h1></div>
-							</div>
-							 <div class="post_content">I am a professional back-end developer and home automation hobbyist from Winnipeg, Manitoba, Canada. I love baseball, curling, cats and Bravo reality tv.</div>
-						</div>
-					</div>
-					<div class="col s12 m3 l3 sidebar">
-						<div class="row">
-							<div class="color color_1"></div>
-							<div class="color color_2"></div>
-							<div class="color color_3"></div>
-							<div class="color color_4"></div>
-							<div class="color color_5"></div>
-						</div>
-						<br />
-
-						<a href="/about/"><div class="sidebar_title">About me</div></a>
-						<a href="/contact/"><div class="sidebar_title">Contact</div></a>
-						<br />
+<div class="post listing">
+	<div class="row">
+		<div class="col-xs-10"><h1 class="post-title">About Me</h1></div>
+	</div>
+	<div>
+		<p>I am a professional web developer and amateur home automation enthusiast from Winnipeg, Manitoba, Canada.</p>
+		<p>Professionally, I work primarily on Laravel based projects with a PHP, MySQL and NGINX backend, as well as a variety of front-end technologies, including but not limited to Twig, AngularJS, and SCSS. In my spare time, I enjoy working with a wide variety of languages-- such as contributing to Home Assistant [Python] and other open source projects, as well as working with new technology stacks such as the one for this blog which is "server-less" (uses a variety of AWS services- Lambda, DynamoDB, API Gateway, CloudFront and S3).</p>
+		<p>I live in an old house with my wife and two cats with whom I enjoy relaxing and watching Vanderpump Rules and Real Housewives. I am also an avid curler and a current member of the executive board for the Thistle Curling Club.</p>
+	</div>
+</div>
 
 
-						<div class="sidebar_title">Categories</div>
-						{{ for(var i = 0; i < it.categories.length; i++) { }}
-							<a href="/category/{{=it.categories[i].url_title}}/"><div class="sidebar_subtitle">{{=it.categories[i].category}}</div></a>
-						{{ } }}
-						<br />
-
-						<div class="sidebar_title">Recent Posts</div>
-						{{ for(var i = 0; i < it.recent_posts.length; i++) { }}
-							<a href="/post/{{=it.recent_posts[i].post_url}}/"><div class="sidebar_subtitle">{{=it.recent_posts[i].title}}</div></a>
-						{{ } }}
-
-						<br />
-						<a href="/list/"><div class="sidebar_title">All Posts</div></a>
-					</div>
-				</div>

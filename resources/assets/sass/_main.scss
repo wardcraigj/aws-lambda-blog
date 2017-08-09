@@ -1,11 +1,12 @@
-@font-face {
-	font-family: "Droid Sans Mono for Powerline";
-	src: url("/fonts/droid-sans.otf") format("opentype");
-}
+
+
+@import url('https://fonts.googleapis.com/css?family=Oswald|Rokkitt');
+
+
 body {
 	background-color: $body-bg;
 	color: $font-color-primary;
-	font-family: "Droid Sans Mono for Powerline", "Droid Sans Mono", Mono;
+	font-family: 'Rokkitt', serif;
 	a {
 		color: $font-color-secondary;
 
@@ -19,7 +20,7 @@ body {
 }
 
 .about {
-	font-size:10px;
+	font-size:14px;
 }
 .hard-right {
 	position: absolute;
@@ -31,6 +32,7 @@ body {
 }
 h1, h2, h3, h4, h5, h6 {
 
+	font-family: 'Oswald', sans-serif;
 	color: $font-color-orange;
 	a {
 		color: $font-color-orange;
@@ -43,5 +45,50 @@ h1, h2, h3, h4, h5, h6 {
 	color: $font-color-post-title;
 }
 .page-title {
+	font-size: 1.2em;
 	color: $font-color-page-title;
+}
+.align-left {
+	float: left;
+}
+.align-right {
+	float: right;
+}
+.post div img {
+	display: block;
+	margin: auto;
+	max-width: 75%;
+	height: auto;
+}
+
+.sidebar {
+
+	img {
+		border-radius: 50%;
+		width: 100%;
+		margin: auto;
+		margin-bottom: 1em;
+	}
+	&-item {
+		padding-top: 10px;
+		line-height: 1em;
+	}
+}
+
+.menu {
+	position: absolute;
+	right: 5px;
+	top: 5px;
+
+	.dropdown-menu.dropdown-menu-right {
+		max-width: 250px;
+	}
+	a.dropdown-item{
+		text-overflow: ellipsis;
+		overflow: hidden;
+
+	}
+}
+.spacer {
+    padding-bottom: 3em;
 }

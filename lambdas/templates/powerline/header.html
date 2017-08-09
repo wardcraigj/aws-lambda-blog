@@ -12,7 +12,11 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 		<script src="/static/js/powerline.js" type="text/javascript"></script>
 		<link href="/static/css/powerline.css" rel="stylesheet">
+		<link rel="stylesheet" href="/static/fontawesome/css/font-awesome-solid.css">
 
+		<script defer src="/static/fontawesome/js/packs/solid.js"></script>
+		<script defer src="/static/fontawesome/js/packs/brands.js"></script>
+		<script defer src="/static/fontawesome/js/fontawesome.js"></script>
 		<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -35,13 +39,12 @@
 	<body>
 
 		<div class="container-fluid">
-
 			<a name="top"></a>
 			<div class="content">
 				<div class="row">
-					<div class="col-xs-12">
+					<div class="">
 						<h1><a class="page-title" href="/">{{=it.header_title}}</a></h1>
-						<ul class="powerline">
+						<ul class="powerline hidden-sm-down">
 							<li class="left">
 								<div>{{=it.header_desc}}</div>
 								<div class="endsection"></div>
@@ -49,40 +52,38 @@
 								<div class="endsection"></div>
 							</li>
 						</ul>
+						<ul class="powerline powerline-small hidden-md-up">
+							<li class="left">
+								<div>{{=it.header_desc}}</div>
+								<div class="endsection"></div>
+								<div class=""> </div>
+								<div class="endsection"></div>
+							</li>
+						</ul>
+
+						<div class="menu hidden-lg-up">
+							<div class="dropdown">
+								<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<span class="glyphicon glyphicon-menu-hamburger"></span>
+
+								</button>
+								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+									{{? it.categories.length !== 0}}
+
+									<h6 class="dropdown-header">Categories</h6>
+									{{ for(var i = 0; i < it.categories.length; i++) { }}
+									<a class="dropdown-item" href="/category/{{=it.categories[i].url_title}}/">{{=it.categories[i].category}}</a>
+									{{ } }}
+									{{?}}
+									<div class="dropdown-divider"></div>
+
+									<h6 class="dropdown-header">Recent Posts</h6>
+									{{ for(var i = 0; i < it.recent_posts.length; i++) { }}
+									<a class="dropdown-item" href="/post/{{=it.recent_posts[i].post_url}}/">{{=it.recent_posts[i].title}}</a>
+									{{ } }}
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
-				<!--
-		<div class="page_container">
-		<div class="row header">
-		<div class="col s12 m12 l12 title">
-		<a href="/"><h1></h1>
-		</div>
-
-
-
-		<div class="col s6 m6 l6 pagination" style="text-align: left;">
-		{{? it.page > 0}}
-		<a href="/page/{{=it.page-1}}"><i class="fa fa-arrow-left" ></i> previous page</<a>
-		{{?}}
-		</div>
-
-
-		<div class="col s6 m6 l6 pagination" style="text-align: right;">
-		{{? it.page < it.last_page}}
-		<a href="/page/{{=it.page+1}}">next page <i class="fa fa-arrow-right" ></i></a>
-		{{?}}
-		</div>
-
-		<script type="text/javascript">
-			$(document).ready(function() {
-								$('select').material_select();
-							});
-		</script>
-		</div>
-		-->
-
-
-
-
-
 

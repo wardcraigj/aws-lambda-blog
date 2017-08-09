@@ -1,25 +1,10 @@
 {{=it.header}}
 <div class="row">
-	<div class="col-xs-12 col-md-3 sidebar">
-		<br />
-		<div class="about">
-			<ul class="powerline hard-left">
-				<li class="left">
-					<div>About</div>
-					<div class="endsection"></div>
-					<div class=""> </div>
-					<div class="endsection"></div>
-				</li>
-			</ul>
-			<br>
-			<div>
-				I'm a PHP Developer and home automation hobbyist from Winnipeg, MB, Canada. I love cats, curling, baseball and Bravo.
-			</div>
-		</div>
+	<div class="col-md-2 hidden-md-down sidebar">
 		<br />
 		<div class="about">
 			{{? it.categories.length !== 0}}
-			<ul class="powerline hard-left">
+			<ul class="powerline powerline-small hard-left">
 				<li class="left">
 					<div>Categories</div>
 					<div class="endsection"></div>
@@ -30,14 +15,14 @@
 			<br />
 			<div>
 				{{ for(var i = 0; i < it.categories.length; i++) { }}
-				<a href="/category/{{=it.categories[i].url_title}}/"><div class="sidebar_subtitle">{{=it.categories[i].category}}</div></a>
+				<a href="/category/{{=it.categories[i].url_title}}/" ><div class="sidebar-item">{{=it.categories[i].category}}</div></a>
 				{{ } }}
 				{{?}}
 			</div>
 		</div>
 		<br />
 		<div class="about">
-			<ul class="powerline hard-left">
+			<ul class="powerline powerline-small hard-left">
 				<li class="left">
 					<div>Recent Posts</div>
 					<div class="endsection"></div>
@@ -48,30 +33,57 @@
 			<br>
 			<div>
 				{{ for(var i = 0; i < it.recent_posts.length; i++) { }}
-				<a href="/post/{{=it.recent_posts[i].post_url}}/"><div class="sidebar_subtitle">{{=it.recent_posts[i].title}}</div></a>
+				<a href="/post/{{=it.recent_posts[i].post_url}}/" ><div class="sidebar-item">{{=it.recent_posts[i].title}}</div></a>
 				{{ } }}
+
+				<a href="/list/" ><div class="sidebar-item">All Posts</div></a>
 			</div>
 		</div>
-		<div class="about">
-			<a href="/list/"><div class="sidebar_title">All Posts</div></a>
-		</div>
-
 		<br />
 		<div class="about">
-			<ul class="powerline hard-left">
+			<ul class="powerline powerline-small hard-left hidden-md-down">
 				<li class="left">
-					<div>Contact</div>
+					<div>About</div>
 					<div class="endsection"></div>
 					<div class=""> </div>
 					<div class="endsection"></div>
 				</li>
 			</ul>
-			<br />
-			<div>contact me at:<br />ward.craig.j {at} gmail.com</div>
+			<br>
+			<div class="sidebar-item">
+				I'm a Developer and home automation hobbyist from Winnipeg, MB, Canada. I love cats, curling, baseball and Bravo.
+			</div>
+			<div>
+				<a href="/about"><i class="fa fa-info-circle" ></i> more about me</a>
+			</div>
+			<div class="sidebar-item">contact me at:<br />ward.craig.j {at} gmail.com</div>
 		</div>
 		<br />
+		<div class="row justify-content-center">
+			<div class="col-9">
+
+				<img src="/static/me.jpg" alt="The personal blog of Craig J. Midwinter" class="hidden-md-down"/>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-3">
+				<a href="https://github.com/wardcraigj">
+					<i class="fab fa-github fa-2x"></i>
+				</a>
+			</div>
+			<div class="col-3">
+				<a href="https://www.instagram.com/wardcraigj">
+					<i class="fab fa-instagram fa-2x"></i>
+				</a>
+			</div>
+			<div class="col-3">
+				<a href="https://twitter.com/craigjward">
+					<i class="fab fa-twitter fa-2x"></i>
+				</a>
+			</div>
+		</div>
 	</div>
-	<div class="col-xs-12 col-md-9">
+	<div class="col-xs-12 col-lg-10">
 		{{=it.content}}
 	</div>
 </div>

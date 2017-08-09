@@ -684,7 +684,7 @@ app.controller('postController', ['$scope', '$http', '$location', '$timeout', '$
 				$scope.submitPostPanelOpen = false;
 				$( ".submit_post_panel" ).animate({
 					bottom: "-=300",
-				  }, 300, 'swing', function() {});
+				  }, 450, 'swing', function() {});
 
 			}
 
@@ -692,7 +692,7 @@ app.controller('postController', ['$scope', '$http', '$location', '$timeout', '$
 				$scope.submitPostPanelOpen = true;
 				$( ".submit_post_panel" ).animate({
 					bottom: "+=300",
-				  }, 300, 'swing', function() {});
+				  }, 450, 'swing', function() {});
 			}
 
 			editor.addEventListener('saved', function (ev) {

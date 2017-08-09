@@ -1,4 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);.powerline {
+@import url(https://fonts.googleapis.com/css?family=Oswald|Rokkitt);.powerline {
+  font-family: "Droid Sans Mono for Powerline", "Droid Sans Mono", Mono;
   list-style: none;
   padding: 0;
   display: -webkit-box;
@@ -17,9 +18,9 @@
   height: 1.5em;
   line-height: 1.5em;
   /* center bg-color */
-  background-color: #000000;
+  background-color: #ffffff;
   color: #fcfcfc;
-  overflow: hidden;
+  overflow-y: hidden;
   left: 0;
   right: 0;
   margin: 0;
@@ -89,44 +90,48 @@
 }
 
 .powerline .left div {
-  background-color: #5f005e;
+  background-color: #c7c7c7;
 }
 
 .powerline .left div:first-child {
-  background-color: #8e44ac;
+  background-color: #656565;
 }
 
 .powerline .left div:first-child + .endsection {
-  border-left-color: #8e44ac;
-  background-color: #5f005e;
+  border-left-color: #656565;
+  background-color: #c7c7c7;
 }
 
 .powerline .left div + .endsection {
-  border-left-color: #5f005e;
-  background-color: #000000;
+  border-left-color: #c7c7c7;
+  background-color: #ffffff;
 }
 
 .powerline .center {
-  background-color: #09007e;
+  background-color: #272727;
   color: #fcfcfc;
 }
 
 .powerline .right .endsection:first-child {
-  border-right-color: #5f005e;
+  border-right-color: #c7c7c7;
 }
 
 .powerline .right div:nth-child(2) {
-  background-color: #5f005e;
+  background-color: #c7c7c7;
   color: #fcfcfc;
 }
 
 .powerline .right div:nth-child(2) + .endsection {
-  background-color: #5f005e;
-  border-right-color: #8e44ac;
+  background-color: #c7c7c7;
+  border-right-color: #656565;
 }
 
 .powerline .right div:nth-child(2) + .endsection + div {
-  background-color: #8e44ac;
+  background-color: #656565;
+}
+
+.powerline-small {
+  font-size: 12px;
 }
 
 .powerline-full {
@@ -135,6 +140,7 @@
   z-index: 150;
   _position: absolute;
   _top: expression(eval(document.documentElement.scrollTop+ (document.documentElement.clientHeight-this.offsetHeight)));
+  font-family: "Droid Sans Mono for Powerline", "Droid Sans Mono", Mono;
   list-style: none;
   padding: 0;
   display: -webkit-box;
@@ -153,9 +159,9 @@
   height: 1.5em;
   line-height: 1.5em;
   /* center bg-color */
-  background-color: #09007e;
-  color: #05005e;
-  overflow: hidden;
+  background-color: #272727;
+  color: #000000;
+  overflow-y: hidden;
   left: 0;
   right: 0;
   margin: 0;
@@ -225,71 +231,85 @@
 }
 
 .powerline-full .left div {
-  background-color: #035dfb;
+  background-color: #656565;
 }
 
 .powerline-full .left div:first-child {
-  background-color: #00dcfa;
+  background-color: #c7c7c7;
 }
 
 .powerline-full .left div:first-child + .endsection {
-  border-left-color: #00dcfa;
-  background-color: #035dfb;
+  border-left-color: #c7c7c7;
+  background-color: #656565;
 }
 
 .powerline-full .left div + .endsection {
-  border-left-color: #035dfb;
-  background-color: #09007e;
+  border-left-color: #656565;
+  background-color: #272727;
 }
 
 .powerline-full .center {
-  background-color: #09007e;
+  background-color: #272727;
   color: #fcfcfc;
 }
 
 .powerline-full .right .endsection:first-child {
-  border-right-color: #035dfb;
+  border-right-color: #656565;
 }
 
 .powerline-full .right div:nth-child(2) {
-  background-color: #035dfb;
+  background-color: #656565;
   color: #fcfcfc;
 }
 
 .powerline-full .right div:nth-child(2) + .endsection {
-  background-color: #035dfb;
-  border-right-color: #00dcfa;
+  background-color: #656565;
+  border-right-color: #c7c7c7;
 }
 
 .powerline-full .right div:nth-child(2) + .endsection + div {
-  background-color: #00dcfa;
+  background-color: #c7c7c7;
 }
 
 .box {
   padding: 0 1em;
-  background-color: #035dfb;
+  background-color: #656565;
   border-style: solid;
   border-color: #fcfcfc;
   border-image-repeat: round;
 }
 
+@font-face {
+  font-family: "Droid Sans Mono for Powerline";
+  src: url("/static/fonts/droid-sans.otf") format("opentype");
+}
+
 .post {
-  padding: 5px 0px;
+  padding: 15px;
+  margin-bottom: 4em;
+}
+
+.post pre {
+  white-space: pre-wrap;
+}
+
+.share_icons a {
+  padding: 5px;
 }
 
 .dateline {
   font-size: 10px;
 }
 
-@font-face {
-  font-family: "Droid Sans Mono for Powerline";
-  src: url("/fonts/droid-sans.otf") format("opentype");
+.dateline-container {
+  top: -15px;
+  position: relative;
 }
 
 body {
-  background-color: #000000;
-  color: #7a7c7d;
-  font-family: "Droid Sans Mono for Powerline", "Droid Sans Mono", Mono;
+  background-color: #ffffff;
+  color: #4f626f;
+  font-family: 'Rokkitt', serif;
 }
 
 body a {
@@ -305,7 +325,7 @@ body a {
 }
 
 .about {
-  font-size: 10px;
+  font-size: 14px;
 }
 
 .hard-right {
@@ -324,6 +344,7 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: 'Oswald', sans-serif;
   color: #e47508;
 }
 
@@ -346,10 +367,57 @@ h6 a:hover {
 }
 
 .post-title {
-  color: #2880b9;
+  color: #333333;
 }
 
 .page-title {
-  color: #cfcfc2;
+  font-size: 1.2em;
+  color: #333333;
+}
+
+.align-left {
+  float: left;
+}
+
+.align-right {
+  float: right;
+}
+
+.post div img {
+  display: block;
+  margin: auto;
+  max-width: 75%;
+  height: auto;
+}
+
+.sidebar img {
+  border-radius: 50%;
+  width: 100%;
+  margin: auto;
+  margin-bottom: 1em;
+}
+
+.sidebar-item {
+  padding-top: 10px;
+  line-height: 1em;
+}
+
+.menu {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+
+.menu .dropdown-menu.dropdown-menu-right {
+  max-width: 250px;
+}
+
+.menu a.dropdown-item {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.spacer {
+  padding-bottom: 3em;
 }
 

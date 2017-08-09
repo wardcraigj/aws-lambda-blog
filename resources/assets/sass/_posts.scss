@@ -1,7 +1,20 @@
 .post {
-    padding: 5px 0px;
-}
+	padding: 15px;
+	margin-bottom: 4em;
+	pre {
+		white-space: pre-wrap;
 
+	}
+
+}
+.share_icons a {
+	padding: 5px;
+}
 .dateline {
-    font-size: 10px;
+	font-size: 10px;
+
+	&-container {
+		top: -15px;
+		position: relative;
+	}
 }
